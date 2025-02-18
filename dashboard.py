@@ -29,14 +29,17 @@ tkinter.Entry(window).grid(row=4, column=5)
 button = tkinter.Button(window, text = "Add")
 button.grid(row = 5, column = 3, sticky="ew", pady=10)
 
+frame = tkinter.Frame(window)
+frame.grid(row=6, column=0, columnspan=3, pady=10)
+
 ##treeview to show expenses and income
-expenseTreeView = ttk.Treeview(window, columns=("Description", "Amount", "Date"))
-expenseTreeView.grid(row=6, column=0,columnspan=3, pady=10)
+expenseTreeView = ttk.Treeview(frame, columns=("Description", "Amount", "Date"))
+expenseTreeView.grid(row=0, column=0, pady=10)
 expenseTreeView.heading("#0", text="Expenses")
 
-incomeTreeView = ttk.Treeview(window, columns=("Description", "Amount", "Date"))
+incomeTreeView = ttk.Treeview(frame, columns=("Description", "Amount", "Date"))
 incomeTreeView.grid(row=7, column=0,columnspan=3 ,pady=10)
-expenseTreeView.heading("#0", text="Income")
+expenseTreeView.heading("#0", text="kjjkl")
 
 
 window.geometry("500x350")
