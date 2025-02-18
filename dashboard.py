@@ -2,6 +2,7 @@ import tkinter
 from tkinter import ttk
 from datetime import datetime
 from tkinter import messagebox
+from System.databaseLogic import connection, insert_transaction
 #import calender
 #from tkCalender import calender
 
@@ -20,6 +21,10 @@ def add_item():
         #add data to the transactions list
         transactions.append({trans_type: amount})
         print(transactions)
+
+        #add data to database
+        user_id = 1
+        insert_transaction(user_id, description, amount, date, trans_type)
 
         #clear the input fields
         description_entry.delete(0, "end")
@@ -46,6 +51,7 @@ def get_balance():
                expense_amount = int(value)
                expense_list.append(expense_amount)
                sum_expense = sum(expense_list)
+               print(sum_expense)
            else:
                 messagebox.showerror("Error", "Please select a transaction type") 
     sum_balance = sum_income - sum_expense
@@ -75,7 +81,7 @@ tkinter.Label(window, text="Description: ").grid(row=5, column=0, pady=10, padx=
 description_entry = tkinter.Entry(window)
 description_entry.grid(row=5, column=1, pady=10, padx=10)
 
-tkinter.Label(window, text="Date: ").grid(row=6, column=0, pady=10, padx=10)
+tkinter.Label(window, text="Date: ", show="DD/MM/YY").grid(row=6, column=0, pady=10, padx=10)
 date_entry = tkinter.Entry(window)
 date_entry.grid(row=6, column=1, pady=10, padx=10)
 
